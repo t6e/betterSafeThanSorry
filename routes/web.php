@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\TopController::class, 'top']);
 
+Route::get('/product/list', [App\Http\Controllers\ProductController::class, 'list']);
+Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'product']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
