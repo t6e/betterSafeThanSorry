@@ -18,6 +18,7 @@ class CreateStockTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->dateTime('expiration_date');
             $table->integer('num');
+            $table->unique(['product_id','expiration_date']);
             $table->foreign('product_id')->references('product_id')->on('products');
         });
     }
