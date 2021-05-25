@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\{Product,Stock};
 
 class ProductController extends Controller
 {
     public function list(){
-        $items=DB::table('products')->get(['product_id','product_name']);
+        $items=Product::get(['product_id','product_name']);
         return view('product.list',['items'=>$items]);
     }
 
-    public function product($id){
-        $product=DB::table('products')->where('product_id',$id)->first();
-        $stock=DB::table('stock')->where('product_id',$id)->get();
-        return view('product.product',['product'=>$product,'stock'=>$stock]);
+    public function product($id,Request $request){
+        $product=Product::find($id);
+        $stock=Stock::where('product_id',$id)->get();
+        $cart=$request->session()->get('cart');
+        return view('product.product',['product'=>$product,'stock'=>$stock,'cart'=>$cart]);
     }
 }

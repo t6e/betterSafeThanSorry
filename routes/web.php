@@ -18,6 +18,13 @@ Route::get('/', [App\Http\Controllers\TopController::class, 'top']);
 Route::get('/product/list', [App\Http\Controllers\ProductController::class, 'list']);
 Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'product']);
 
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart']);
+Route::post('/cart/add', [App\Http\Controllers\CartController::class, 'add']);
+Route::get('/cart/remove/{id}', [App\Http\Controllers\CartController::class, 'remove']);
+Route::post('/cart/change', [App\Http\Controllers\CartController::class, 'change']);
+
+Route::get('/history', [App\Http\Controllers\UserController::class, 'history']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

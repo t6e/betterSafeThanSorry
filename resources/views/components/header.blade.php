@@ -6,4 +6,7 @@
             (<a href="/login">ログイン</a>|<a href="/register">登録</a>)
         @endif
     </p>
+    <p>
+        <a href="/cart">カート</a> | <a href="/product/list">商品一覧</a>
+    </p>
 </header>

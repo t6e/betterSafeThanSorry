@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('page_title', '商品一覧')
+@section('page_title', '購入履歴')
 @section('content')
     <ol>
         @foreach ($items as $item)
