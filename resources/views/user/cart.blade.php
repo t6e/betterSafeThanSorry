@@ -2,7 +2,6 @@
 @section('page_title', 'カートの中身')
 @section('content')
     <?php use App\Models\{Product, Stock}; ?>
-    {{-- {{ var_dump($cart) }} --}}
     @if (!isset($cart))
         <p>何も入っていません</p>
     @else
@@ -36,7 +35,7 @@
                     </tr>
                 @endforeach
             </table>
-            <p><input type="submit" value="変更を保存"> | <a href="/">購入</a></p>
+            <p><input type="submit" value="変更を保存"> | <a href="purchase">購入</a></p>
         </form>
     @endif
 @endsection

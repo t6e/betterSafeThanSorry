@@ -23,7 +23,8 @@ Route::post('/cart/add', [App\Http\Controllers\CartController::class, 'add']);
 Route::get('/cart/remove/{id}', [App\Http\Controllers\CartController::class, 'remove']);
 Route::post('/cart/change', [App\Http\Controllers\CartController::class, 'change']);
 
-Route::get('/history', [App\Http\Controllers\UserController::class, 'history']);
+Route::get('/purchase', [App\Http\Controllers\UserController::class, 'purchase'])->middleware('auth');
+Route::get('/history', [App\Http\Controllers\UserController::class, 'history'])->middleware('auth');
 
 Auth::routes();
 

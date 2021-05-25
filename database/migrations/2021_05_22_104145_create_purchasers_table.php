@@ -15,11 +15,10 @@ class CreatePurchasersTable extends Migration
     {
         Schema::create('purchasers', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('stack_id');
+            $table->unsignedBigInteger('stock_id');
             $table->unsignedInteger('num');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('stack_id')->references('stack_id')->on('stack');
-            $table->primary(['user_id', 'stack_id']);
+            $table->foreign('stock_id')->references('stock_id')->on('stock');
             $table->timestamps();
         });
     }

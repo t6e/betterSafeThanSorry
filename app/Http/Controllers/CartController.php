@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function cart(Request $request){
+        $user=Auth::user();
         $cart=$request->session()->get('cart');
-        return view('user.cart',['cart'=>$cart]);
+        $params=['user'=>$user,'cart'=>$cart];
+        return view('user.cart',$params);
     }
 
     public function add(Request $request){
         $request->session()->push('cart',['stock_id'=>$request->stock_id,'num'=>$request->num]);
-        return redirect('/product/'.$request->product_id);
+        return redirect('product/'.$request->product_id);
     }
 
     public function remove($id,Request $request){
@@ -27,7 +30,7 @@ class CartController extends Controller
         if($cart==[]){
             $cart=NULL;
         }
-        return view('user.cart',['cart'=>$cart]);
+        return redirect('/cart');
     }
 
     public function change(Request $request){
